@@ -1,0 +1,77 @@
+// ALGORITHM main
+// VAR
+//     // num1,num2,num3 : INTEGER;
+//     // sum : INTEGER := 0;
+//     sentence: STRING;
+//     charCounter: INTEGER :=0;
+//     wordCounter: INTEGER :=0;
+//     vowelsCounter: INTEGER :=0;
+//     myVowels : ARRAY_OF STRING["a", "e", "i", "o", "u"];
+// BEGIN
+//     Read(sentence)
+ 
+    
+//     FOR i IN sentence DO
+//         IF (1 != " ") THEN
+//             charCounter = charCounter + 1
+//         END_IF
+//          //counts the Number of Characterss
+//         IF (i = " ") THEN
+//             wordCounter = wordCounter + 1
+//         ELSE
+//             Write("No Words")
+//         END_IF
+//         //counts the Number Of Vowels
+//         IF (i in myVowels) THEN
+//             vowelsCounter = vowelsCounter + 1;
+//         ELSE
+//             Write("No Vowels")
+//         END_IF
+//     END_FOR
+
+//     Write(charCounter "Characters")
+//     Write(wordCounter "Words")
+//     Write(vowelsCounter "Vowels")
+// END
+//////////////////////////////////////////////////////////////
+// SAME LOGIC AS ABOVE AFTER SYNTAX CLEAN-UP BY A.I
+ALGORITHM main
+VAR
+    sentence : STRING;
+    charCounter : INTEGER := 0;
+    wordCounter : INTEGER := 1; // start at 1 to count the last word
+    vowelsCounter : INTEGER := 0;
+    myVowels : ARRAY[1..5] OF STRING := ["a", "e", "i", "o", "u"];
+    i : INTEGER;
+    letter : CHARACTER;
+BEGIN
+    READ(sentence)
+
+    FOR i FROM 1 TO LENGTH(sentence) DO
+        letter := CHARACTER(sentence, i)
+
+        // Count non-space characters
+        IF letter != " " THEN
+            charCounter := charCounter + 1
+        END_IF
+
+        IF letter = "." THEN
+            wordCounter := wordCounter + 1
+        END_IF
+
+        // Count spaces as word separators
+        IF letter = " " THEN
+            wordCounter := wordCounter + 1
+        END_IF
+
+        // Check if the letter is a vowel
+        IF letter = "a" OR letter = "e" OR letter = "i" OR letter = "o" OR letter = "u" OR
+           letter = "A" OR letter = "E" OR letter = "I" OR letter = "O" OR letter = "U" THEN
+            vowelsCounter := vowelsCounter + 1
+        END_IF
+    END_FOR
+
+    WRITE("Characters: ", charCounter)
+    WRITE("Words: ", wordCounter)
+    WRITE("Vowels: ", vowelsCounter)
+END
